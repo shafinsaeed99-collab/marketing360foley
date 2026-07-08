@@ -95,7 +95,7 @@ export default function ContactSection() {
                       value={form.name}
                       onChange={handleChange}
                       placeholder="e.g. Director Sterling"
-                      className="w-full bg-neutral-900/60 border border-border/80 rounded-lg px-4 py-3 text-sm text-foreground placeholder-muted-foreground/40 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300"
+                      className="w-full bg-[var(--form-input-bg)] border border-border/80 rounded-lg px-4 py-3 text-sm text-foreground placeholder-muted-foreground/40 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300"
                     />
                   </div>
                 </div>
@@ -113,7 +113,7 @@ export default function ContactSection() {
                       value={form.email}
                       onChange={handleChange}
                       placeholder="e.g. sterling@facility.secure"
-                      className="w-full bg-neutral-900/60 border border-border/80 rounded-lg px-4 py-3 text-sm text-foreground placeholder-muted-foreground/40 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300"
+                      className="w-full bg-[var(--form-input-bg)] border border-border/80 rounded-lg px-4 py-3 text-sm text-foreground placeholder-muted-foreground/40 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300"
                     />
                   </div>
                 </div>
@@ -129,12 +129,12 @@ export default function ContactSection() {
                     name="projectType"
                     value={form.projectType}
                     onChange={handleChange}
-                    className="w-full bg-neutral-900/80 border border-border/80 rounded-lg px-4 py-3 text-sm text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 appearance-none cursor-pointer"
+                    className="w-full bg-[var(--form-input-bg)] border border-border/80 rounded-lg px-4 py-3 text-sm text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 appearance-none cursor-pointer"
                   >
-                    <option value="Logistics Hub" className="bg-neutral-900">Logistics Hub / Distribution Center</option>
-                    <option value="Data Center" className="bg-neutral-900">Data Center / High-Security Vaults</option>
-                    <option value="Corporate Office" className="bg-neutral-900">Corporate HQ / High-Traffic Entrance</option>
-                    <option value="Industrial Site" className="bg-neutral-900">Industrial Facility / Perimeter Defense</option>
+                    <option value="Logistics Hub" className="bg-background">Logistics Hub / Distribution Center</option>
+                    <option value="Data Center" className="bg-background">Data Center / High-Security Vaults</option>
+                    <option value="Corporate Office" className="bg-background">Corporate HQ / High-Traffic Entrance</option>
+                    <option value="Industrial Site" className="bg-background">Industrial Facility / Perimeter Defense</option>
                   </select>
                   {/* Custom Arrow */}
                   <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-muted-foreground">
@@ -157,7 +157,7 @@ export default function ContactSection() {
                   value={form.message}
                   onChange={handleChange}
                   placeholder="Describe your site parameters, approximate entry coordinates, hardware count (cameras/scanners), and deadline requests..."
-                  className="w-full bg-neutral-900/60 border border-border/80 rounded-lg px-4 py-3 text-sm text-foreground placeholder-muted-foreground/40 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 resize-none"
+                  className="w-full bg-[var(--form-input-bg)] border border-border/80 rounded-lg px-4 py-3 text-sm text-foreground placeholder-muted-foreground/40 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 resize-none"
                 />
               </div>
 

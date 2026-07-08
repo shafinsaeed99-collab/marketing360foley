@@ -5,7 +5,7 @@ const PROJECTS = [
     tags: ["Surveillance", "Logistics", "Active Guarding"],
     metrics: "400k sq ft secured",
     svg: (
-      <svg className="w-full h-full bg-neutral-900/60" viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg className="w-full h-full bg-[var(--svg-bg)]" viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg">
         {/* Grid Background */}
         <defs>
           <pattern id="grid1" width="20" height="20" patternUnits="userSpaceOnUse">
@@ -39,7 +39,7 @@ const PROJECTS = [
     tags: ["Data Center", "Access Control", "Zero-Trust"],
     metrics: "140 cabinets shielded",
     svg: (
-      <svg className="w-full h-full bg-neutral-900/60" viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg className="w-full h-full bg-[var(--svg-bg)]" viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="100%" height="100%" fill="url(#grid1)" />
         {/* Server Node Connections */}
         <path d="M 60 120 L 150 120 L 200 70 L 290 70 M 200 70 L 200 170 L 290 170" stroke="rgba(255,255,255,0.1)" strokeWidth="1.5" />
@@ -67,7 +67,7 @@ const PROJECTS = [
     tags: ["Corporate", "Biometrics", "Gate Integration"],
     metrics: "4,000+ staff managed",
     svg: (
-      <svg className="w-full h-full bg-neutral-900/60" viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg className="w-full h-full bg-[var(--svg-bg)]" viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="100%" height="100%" fill="url(#grid1)" />
         {/* Facial mesh nodes */}
         <path d="M 160 80 L 200 50 L 240 80 L 230 140 L 200 170 L 170 140 Z" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />

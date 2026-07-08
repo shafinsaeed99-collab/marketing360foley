@@ -3,13 +3,13 @@ import LogoMarquee from "./LogoMarquee"
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex flex-col bg-hero-bg overflow-hidden">
+    <section className="dark relative min-h-screen flex flex-col overflow-hidden" style={{ backgroundColor: 'hsl(260, 87%, 3%)' }}>
       {/* ──── Background Video (looping, behind everything) ──── */}
       <VideoBackground />
 
       {/* ──── CSS Mesh Overlay (grid lines + glow nodes) ──── */}
       <div className="absolute inset-0 pointer-events-none z-[2]">
-        <div className="absolute inset-0 bg-hero-bg/25" />
+        <div className="absolute inset-0" style={{ backgroundColor: 'hsla(260, 87%, 3%, 0.25)' }} />
         {/* Grid lines */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:40px_40px]" />
 
@@ -39,7 +39,7 @@ export default function HeroSection() {
         <div className="w-full max-w-[90%] sm:max-w-md lg:max-w-2xl px-6 md:px-10 pb-8 sm:pb-12 md:pb-16 pt-28 sm:pt-32 flex flex-col justify-end">
           {/* Heading */}
           <h1
-            className="text-[clamp(2.5rem,8vw,6rem)] font-bold leading-[1.05] tracking-[-0.05em] text-foreground mb-2 md:mb-4 uppercase opacity-0 animate-fade-up"
+            className="text-[clamp(2.5rem,8vw,6rem)] font-bold leading-[1.05] tracking-[-0.05em] text-white mb-2 md:mb-4 uppercase opacity-0 animate-fade-up"
             style={{ animationDelay: "0.2s" }}
           >
             SENTINEL{" "}
@@ -53,7 +53,7 @@ export default function HeroSection() {
 
           {/* Subheading */}
           <p
-            className="text-foreground/80 text-[clamp(1rem,2.5vw,1.875rem)] font-light mb-3 md:mb-6 opacity-0 animate-fade-up"
+            className="text-white/80 text-[clamp(1rem,2.5vw,1.875rem)] font-light mb-3 md:mb-6 opacity-0 animate-fade-up"
             style={{ animationDelay: "0.4s" }}
           >
             We implement security correctly.
@@ -61,7 +61,7 @@ export default function HeroSection() {
 
           {/* Description */}
           <p
-            className="text-muted-foreground text-[clamp(0.8rem,1.5vw,1.25rem)] font-light mb-4 md:mb-8 leading-relaxed opacity-0 animate-fade-up"
+            className="text-gray-400 text-[clamp(0.8rem,1.5vw,1.25rem)] font-light mb-4 md:mb-8 leading-relaxed opacity-0 animate-fade-up"
             style={{ animationDelay: "0.55s" }}
           >
             Enterprise security systems built in days. AI-powered surveillance deployed with zero-trust architecture. Smart access control set up for your entire facility. All of it done right, not just fast.
@@ -78,7 +78,7 @@ export default function HeroSection() {
               </button>
             </a>
             <a href="#services" className="pointer-events-auto">
-              <button className="bg-white text-background px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 text-xs sm:text-sm rounded-sm cursor-pointer hover:brightness-90 transition-all active:scale-[0.97] font-bold select-none">
+              <button className="bg-white/10 text-white border border-white/20 px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 text-xs sm:text-sm rounded-sm cursor-pointer hover:bg-white/20 transition-all active:scale-[0.97] font-bold select-none">
                 Our Work
               </button>
             </a>
@@ -86,7 +86,7 @@ export default function HeroSection() {
 
           {/* Trust line */}
           <p
-            className="text-muted-foreground/60 text-[10px] sm:text-xs font-light mt-4 sm:mt-6 md:mt-8 opacity-0 animate-fade-up"
+            className="text-gray-500 text-[10px] sm:text-xs font-light mt-4 sm:mt-6 md:mt-8 opacity-0 animate-fade-up"
             style={{ animationDelay: "0.85s" }}
           >
             Trusted security partner. Columbus, OH. 12 systems deployed.

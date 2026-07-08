@@ -1,30 +1,45 @@
-import { Eye, ShieldAlert, Cpu, Radio } from "lucide-react"
+import { Link } from "react-router-dom"
+import { Eye, ShieldAlert, Cpu, Radio, Palette, Megaphone, ArrowRight } from "lucide-react"
 
 const SERVICES = [
+  {
+    icon: Palette,
+    title: "Web Design & Development",
+    description: "Pixel-perfect websites built for conversion. From stunning UI/UX design to full-stack development — we craft digital experiences that grow your brand.",
+    specs: ["UI/UX Design & Prototyping", "Responsive Development", "E-Commerce & Landing Pages"],
+    link: "/services/web-design",
+  },
+  {
+    icon: Megaphone,
+    title: "Social Media Marketing",
+    description: "Data-driven strategies that turn scrollers into customers. Content creation, paid ads, and community management across every major platform.",
+    specs: ["Content Strategy & Creation", "Paid Advertising (Meta/Google)", "Analytics & Growth Hacking"],
+    link: "/services/social-media-marketing",
+  },
   {
     icon: Eye,
     title: "AI Surveillance",
     description: "Autonomous computer vision threat detection. Scans perimeters in real-time, matching visual data against behavioral threat indices. Zero false alarms.",
-    specs: ["24/7 Live Threat Scoring", "Autonomous Object Detection", "Thermal Perimeter Guard"]
+    specs: ["24/7 Live Threat Scoring", "Autonomous Object Detection", "Thermal Perimeter Guard"],
   },
   {
     icon: ShieldAlert,
     title: "Zero-Trust Architecture",
     description: "Continuous validation of every transaction and access point. Microsegmentation guarantees that a single point breach remains fully isolated.",
-    specs: ["Cryptographic Device Identifiers", "Dynamic Session Validation", "Isolate Compromised Node < 50ms"]
+    specs: ["Cryptographic Device Identifiers", "Dynamic Session Validation", "Isolate Compromised Node < 50ms"],
   },
   {
     icon: Cpu,
     title: "Smart Access Control",
     description: "Cloud-managed hardware configurations. Integrated biometric scanners, digital keycards, and remote gateway locking deployable across global sites.",
-    specs: ["Sub-second Authentication", "Hardware Tamper Triggers", "Biometric / MFA Lockouts"]
+    specs: ["Sub-second Authentication", "Hardware Tamper Triggers", "Biometric / MFA Lockouts"],
   },
   {
     icon: Radio,
     title: "Response Orchestration",
     description: "Direct secure channels into localized law enforcement and private security dispatchers. Fully automated threat escalation triggers.",
-    specs: ["Direct Police/Private Hook", "Silent Automation Alarms", "Automated Facility Lockdowns"]
-  }
+    specs: ["Direct Police/Private Hook", "Silent Automation Alarms", "Automated Facility Lockdowns"],
+  },
 ]
 
 export default function ServicesSection() {
@@ -52,11 +67,10 @@ export default function ServicesSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {SERVICES.map((service) => {
             const IconComponent = service.icon
-            return (
-              <div
-                key={service.title}
-                className="glow-card bg-secondary/30 border border-border/60 rounded-xl p-8 hover:border-primary/50 transition-all duration-500 group flex flex-col justify-between"
-              >
+            const hasLink = "link" in service && service.link
+
+            const cardContent = (
+              <>
                 <div>
                   {/* Icon & Glow */}
                   <div className="w-12 h-12 rounded-lg bg-nav-button flex items-center justify-center border border-border/80 text-primary mb-6 group-hover:shadow-[0_0_15px_rgba(119,253,12,0.3)] group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
@@ -64,8 +78,11 @@ export default function ServicesSection() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors duration-300 uppercase tracking-wide">
+                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors duration-300 uppercase tracking-wide flex items-center gap-2">
                     {service.title}
+                    {hasLink && (
+                      <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                    )}
                   </h3>
 
                   {/* Description */}
@@ -77,7 +94,7 @@ export default function ServicesSection() {
                 {/* Technical Specifications */}
                 <div className="border-t border-border/40 pt-4 mt-auto">
                   <span className="text-[10px] uppercase tracking-wider text-muted-foreground/60 font-semibold mb-2 block">
-                    Technical Specifications:
+                    {hasLink ? "Key Services:" : "Technical Specifications:"}
                   </span>
                   <ul className="space-y-1.5">
                     {service.specs.map((spec) => (
@@ -87,7 +104,33 @@ export default function ServicesSection() {
                       </li>
                     ))}
                   </ul>
+                  {hasLink && (
+                    <span className="inline-flex items-center gap-1 text-[10px] text-primary font-semibold uppercase tracking-widest mt-4 group-hover:gap-2 transition-all">
+                      View Details <ArrowRight className="w-3 h-3" />
+                    </span>
+                  )}
                 </div>
+              </>
+            )
+
+            if (hasLink) {
+              return (
+                <Link
+                  key={service.title}
+                  to={service.link!}
+                  className="glow-card bg-secondary/30 border border-border/60 rounded-xl p-8 hover:border-primary/50 transition-all duration-500 group flex flex-col justify-between cursor-pointer"
+                >
+                  {cardContent}
+                </Link>
+              )
+            }
+
+            return (
+              <div
+                key={service.title}
+                className="glow-card bg-secondary/30 border border-border/60 rounded-xl p-8 hover:border-primary/50 transition-all duration-500 group flex flex-col justify-between"
+              >
+                {cardContent}
               </div>
             )
           })}
