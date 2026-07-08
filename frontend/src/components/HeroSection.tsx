@@ -42,12 +42,12 @@ export default function HeroSection() {
             className="text-[clamp(2.5rem,8vw,6rem)] font-bold leading-[1.05] tracking-[-0.05em] text-white mb-2 md:mb-4 uppercase opacity-0 animate-fade-up"
             style={{ animationDelay: "0.2s" }}
           >
-            SENTINEL{" "}
+            360FOLEY{" "}
             <span
               className="bg-clip-text text-transparent"
               style={{ backgroundImage: "linear-gradient(to left, #6366f1, #a855f7, #fcd34d)" }}
             >
-              AI
+              MARKETING
             </span>
           </h1>
 
