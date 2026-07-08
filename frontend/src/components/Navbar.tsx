@@ -33,7 +33,7 @@ export default function Navbar() {
       <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 sm:px-8 lg:px-16 py-5 bg-transparent backdrop-blur-[2px]">
         {/* Left: Logo */}
         <Link to="/" className="text-foreground text-xl font-semibold tracking-tight select-none">
-          SENTINEL<span className="text-primary font-bold">.</span>
+          360FOLEY <span className="text-primary font-bold">MARKETING</span>
         </Link>
 
         {/* Center: Nav links (desktop) */}
@@ -85,19 +85,16 @@ export default function Navbar() {
             aria-label="Toggle menu"
           >
             <span
-              className={`block w-6 h-[2px] bg-foreground rounded-full transition-all duration-300 origin-center ${
-                isOpen ? "rotate-45 translate-y-[7px]" : ""
-              }`}
+              className={`block w-6 h-[2px] bg-foreground rounded-full transition-all duration-300 origin-center ${isOpen ? "rotate-45 translate-y-[7px]" : ""
+                }`}
             />
             <span
-              className={`block w-6 h-[2px] bg-foreground rounded-full transition-all duration-300 ${
-                isOpen ? "opacity-0 scale-x-0" : ""
-              }`}
+              className={`block w-6 h-[2px] bg-foreground rounded-full transition-all duration-300 ${isOpen ? "opacity-0 scale-x-0" : ""
+                }`}
             />
             <span
-              className={`block w-6 h-[2px] bg-foreground rounded-full transition-all duration-300 origin-center ${
-                isOpen ? "-rotate-45 -translate-y-[7px]" : ""
-              }`}
+              className={`block w-6 h-[2px] bg-foreground rounded-full transition-all duration-300 origin-center ${isOpen ? "-rotate-45 -translate-y-[7px]" : ""
+                }`}
             />
           </button>
         </div>
@@ -105,11 +102,10 @@ export default function Navbar() {
 
       {/* ──── Mobile Fullscreen Menu ──── */}
       <div
-        className={`fixed inset-0 z-40 flex flex-col transition-all duration-500 md:hidden ${
-          isOpen
+        className={`fixed inset-0 z-40 flex flex-col transition-all duration-500 md:hidden ${isOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
-        }`}
+          }`}
       >
         {/* Backdrop */}
         <div
@@ -125,11 +121,10 @@ export default function Navbar() {
                 key={link.label}
                 href={link.href.replace("/", "")}
                 onClick={() => handleNavClick(link.href)}
-                className={`text-2xl font-semibold text-foreground/90 hover:text-primary uppercase tracking-widest transition-all duration-300 ${
-                  isOpen
+                className={`text-2xl font-semibold text-foreground/90 hover:text-primary uppercase tracking-widest transition-all duration-300 ${isOpen
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-4"
-                }`}
+                  }`}
                 style={{ transitionDelay: isOpen ? `${idx * 80}ms` : "0ms" }}
               >
                 {link.label}
@@ -139,11 +134,10 @@ export default function Navbar() {
                 key={link.label}
                 to={link.href}
                 onClick={() => setIsOpen(false)}
-                className={`text-2xl font-semibold text-foreground/90 hover:text-primary uppercase tracking-widest transition-all duration-300 ${
-                  isOpen
+                className={`text-2xl font-semibold text-foreground/90 hover:text-primary uppercase tracking-widest transition-all duration-300 ${isOpen
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-4"
-                }`}
+                  }`}
                 style={{ transitionDelay: isOpen ? `${idx * 80}ms` : "0ms" }}
               >
                 {link.label}
@@ -153,11 +147,10 @@ export default function Navbar() {
 
           {/* Theme toggle in mobile menu */}
           <div
-            className={`transition-all duration-300 ${
-              isOpen
+            className={`transition-all duration-300 ${isOpen
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-4"
-            }`}
+              }`}
             style={{ transitionDelay: isOpen ? `${NAV_LINKS.length * 80}ms` : "0ms" }}
           >
             <ThemeToggle />
@@ -167,11 +160,10 @@ export default function Navbar() {
           <Link
             to="/#contacts"
             onClick={() => setIsOpen(false)}
-            className={`mt-2 transition-all duration-300 ${
-              isOpen
+            className={`mt-2 transition-all duration-300 ${isOpen
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-4"
-            }`}
+              }`}
             style={{ transitionDelay: isOpen ? `${(NAV_LINKS.length + 1) * 80}ms` : "0ms" }}
           >
             <Button variant="navCta" size="lg" className="px-8 py-3 text-base">
