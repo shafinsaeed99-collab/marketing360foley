@@ -38,13 +38,13 @@ export default function ContactSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <p className="text-xs font-semibold tracking-[0.25em] text-primary uppercase mb-3">
-            // Secure Transmissions
+            // Get Started
           </p>
           <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tight mb-4">
-            Connect Tactical Hub
+            Connect With Us
           </h2>
           <p className="text-muted-foreground text-sm font-light max-w-lg mx-auto">
-            Establish a secure connection with our security engineers. We will analyze your site metrics and design a custom deployment package.
+            Connect with our digital experts. We'll analyze your business, understand your goals, and create a customized solution combining marketing, web development, and AI to accelerate your growth.
           </p>
         </div>
 
@@ -60,13 +60,13 @@ export default function ContactSection() {
                 <ShieldCheck className="w-8 h-8" />
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-primary uppercase tracking-wider mb-3 font-mono">
-                // LINK ESTABLISHED
+                // MESSAGE SENT SUCCESSFULLY
               </h3>
               <p className="text-foreground text-sm sm:text-base font-light mb-2 max-w-md">
-                Secure packet successfully transmitted to Sentinel Command.
+                Our team will respond within 24 hours to discuss your project and answer any questions you may have.
               </p>
               <p className="text-muted-foreground text-xs font-mono max-w-sm">
-                PORT_COMM_OK: An operations coordinator is analyzing your parameters. Response scheduled within 6 hours.
+                Thank You!
               </p>
               <button
                 onClick={() => {
@@ -75,7 +75,7 @@ export default function ContactSection() {
                 }}
                 className="mt-8 text-xs text-primary underline underline-offset-4 uppercase tracking-widest font-mono font-semibold hover:text-white transition-colors"
               >
-                Establish New Transmission
+                Back to Contact Form.
               </button>
             </div>
           ) : (
@@ -85,7 +85,7 @@ export default function ContactSection() {
                 {/* Name */}
                 <div className="space-y-2">
                   <label className="text-[10px] uppercase tracking-widest font-semibold text-muted-foreground/80 block">
-                    Full Name / Designation
+                    Full Name
                   </label>
                   <div className="relative">
                     <input
@@ -103,7 +103,7 @@ export default function ContactSection() {
                 {/* Email */}
                 <div className="space-y-2">
                   <label className="text-[10px] uppercase tracking-widest font-semibold text-muted-foreground/80 block">
-                    Secure Communications Channel
+                    Email
                   </label>
                   <div className="relative">
                     <input
@@ -122,7 +122,7 @@ export default function ContactSection() {
               {/* Project Type */}
               <div className="space-y-2">
                 <label className="text-[10px] uppercase tracking-widest font-semibold text-muted-foreground/80 block">
-                  Target Facility Type
+                  Select Service
                 </label>
                 <div className="relative">
                   <select
@@ -131,10 +131,10 @@ export default function ContactSection() {
                     onChange={handleChange}
                     className="w-full bg-[var(--form-input-bg)] border border-border/80 rounded-lg px-4 py-3 text-sm text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 appearance-none cursor-pointer"
                   >
-                    <option value="Logistics Hub" className="bg-background">Logistics Hub / Distribution Center</option>
-                    <option value="Data Center" className="bg-background">Data Center / High-Security Vaults</option>
-                    <option value="Corporate Office" className="bg-background">Corporate HQ / High-Traffic Entrance</option>
-                    <option value="Industrial Site" className="bg-background">Industrial Facility / Perimeter Defense</option>
+                    <option value="Logistics Hub" className="bg-background">Web Development</option>
+                    <option value="Data Center" className="bg-background">SEO</option>
+                    <option value="Corporate Office" className="bg-background">Social Media Marketing</option>
+                    <option value="Industrial Site" className="bg-background">AI Automation</option>
                   </select>
                   {/* Custom Arrow */}
                   <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-muted-foreground">
@@ -148,7 +148,7 @@ export default function ContactSection() {
               {/* Message */}
               <div className="space-y-2">
                 <label className="text-[10px] uppercase tracking-widest font-semibold text-muted-foreground/80 block">
-                  Security Parameters / Scope Details
+                  Describe your Project
                 </label>
                 <textarea
                   name="message"
@@ -173,12 +173,12 @@ export default function ContactSection() {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                     </svg>
-                    ENCRYPTING PACKET...
+                    Sending...
                   </>
                 ) : (
                   <>
                     <Send className="w-3.5 h-3.5" />
-                    TRANSMIT SECURE LINK
+                    Send Message
                   </>
                 )}
               </button>
