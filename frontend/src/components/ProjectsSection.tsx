@@ -55,15 +55,11 @@ export default function ProjectsSection() {
                 {/* Image / SVG Diagram */}
                 <div className="h-48 relative overflow-hidden border-b border-border/40 select-none">
                   <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-500 ease-out">
-                    {'image' in project && project.image ? (
-                      <img
+                    <img
                         src={project.image}
                         alt={project.title}
                         className="w-full h-full object-cover object-top"
                       />
-                    ) : (
-                      'svg' in project && project.svg
-                    )}
                   </div>
                   {/* Glowing subtle filter overlay */}
                   <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/2 transition-colors duration-300 pointer-events-none" />
