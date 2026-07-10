@@ -19,7 +19,7 @@ function HomePage() {
       <ServicesSection />
       <AboutSection />
       <ProjectsSection />
-      <TeamSection />
+      {/*<TeamSection />*/}
       <ContactSection />
       <Footer />
     </div>
