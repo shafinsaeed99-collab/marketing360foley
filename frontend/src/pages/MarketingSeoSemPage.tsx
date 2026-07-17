@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom"
 import {
-  TrendingUp,
-  BarChart3,
   Search,
   Zap,
   Target,
@@ -13,8 +11,6 @@ import {
   FileSearch,
   Compass,
   LineChart,
-  Network,
-  Settings,
   Activity,
   AlertCircle,
   ArrowLeft

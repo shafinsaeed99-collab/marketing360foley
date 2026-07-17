@@ -2,7 +2,6 @@ import { Link } from "react-router-dom"
 import {
   Cpu,
   Zap,
-  Layers,
   Database,
   Terminal,
   Settings2,
