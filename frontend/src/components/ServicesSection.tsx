@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Eye, ShieldAlert, Cpu, Radio, Palette, Megaphone, ArrowRight } from "lucide-react"
+import { Palette, Megaphone, ArrowRight, TrendingUp, Bot } from "lucide-react"
 
 const SERVICES = [
   {
@@ -17,28 +17,18 @@ const SERVICES = [
     link: "/services/social-media-marketing",
   },
   {
-    icon: Eye,
-    title: "AI Surveillance",
-    description: "Autonomous computer vision threat detection. Scans perimeters in real-time, matching visual data against behavioral threat indices. Zero false alarms.",
-    specs: ["24/7 Live Threat Scoring", "Autonomous Object Detection", "Thermal Perimeter Guard"],
+    icon: TrendingUp,
+    title: "Marketing Strategy & SEO/SEM",
+    description: "ROI-driven search engine optimization and marketing campaigns. CMO consultancy, competitive research, and digital roadmaps that drive growth.",
+    specs: ["CMO Consultancy & Discovery", "On-Page & Off-Page SEO", "Search Engine Marketing (SEM)"],
+    link: "/services/marketing-seo-sem",
   },
   {
-    icon: ShieldAlert,
-    title: "Zero-Trust Architecture",
-    description: "Continuous validation of every transaction and access point. Microsegmentation guarantees that a single point breach remains fully isolated.",
-    specs: ["Cryptographic Device Identifiers", "Dynamic Session Validation", "Isolate Compromised Node < 50ms"],
-  },
-  {
-    icon: Cpu,
-    title: "Smart Access Control",
-    description: "Cloud-managed hardware configurations. Integrated biometric scanners, digital keycards, and remote gateway locking deployable across global sites.",
-    specs: ["Sub-second Authentication", "Hardware Tamper Triggers", "Biometric / MFA Lockouts"],
-  },
-  {
-    icon: Radio,
-    title: "Response Orchestration",
-    description: "Direct secure channels into localized law enforcement and private security dispatchers. Fully automated threat escalation triggers.",
-    specs: ["Direct Police/Private Hook", "Silent Automation Alarms", "Automated Facility Lockdowns"],
+    icon: Bot,
+    title: "AI & Workflow Automation",
+    description: "Optimize operations, eliminate manual bottlenecks, and scale your business using cutting-edge Agentic AI and process automation.",
+    specs: ["Cognitive AI Agents", "Intelligent Workflows (IPA)", "LLM & RAG Architectures"],
+    link: "/services/ai-automation",
   },
 ]
 
@@ -53,13 +43,13 @@ export default function ServicesSection() {
         {/* Section Header */}
         <div className="mb-16 max-w-2xl">
           <p className="text-xs font-semibold tracking-[0.25em] text-primary uppercase mb-3">
-            // Core Capabilities
+            // Our Services
           </p>
           <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tight mb-4">
-            Security Done Right
+            Growth Done Right
           </h2>
           <p className="text-muted-foreground text-base md:text-lg font-light leading-relaxed">
-            Our systems utilize advanced neural nets and zero-trust protocol to enforce strict, uncompromised physical and digital protection.
+            We deliver ROI-driven digital strategies, premium custom web designs, social media growth engines, and cognitive AI workflows to scale your brand.
           </p>
         </div>
 

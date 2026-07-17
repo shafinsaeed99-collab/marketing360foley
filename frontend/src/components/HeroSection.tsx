@@ -42,13 +42,13 @@ export default function HeroSection() {
             className="text-[clamp(2.5rem,8vw,6rem)] font-bold leading-[1.05] tracking-[-0.05em] text-white mb-2 md:mb-4 uppercase opacity-0 animate-fade-up"
             style={{ animationDelay: "0.2s" }}
           >
-            360FOLEY{" "}
             <span
               className="bg-clip-text text-transparent"
               style={{ backgroundImage: "linear-gradient(to left, #6366f1, #a855f7, #fcd34d)" }}
             >
-              MARKETING
-            </span>
+              MARKETING360
+            </span>{" "}
+            FOLEY
           </h1>
 
           {/* Subheading */}
@@ -56,7 +56,7 @@ export default function HeroSection() {
             className="text-white/80 text-[clamp(1rem,2.5vw,1.875rem)] font-light mb-3 md:mb-6 opacity-0 animate-fade-up"
             style={{ animationDelay: "0.4s" }}
           >
-            We implement security correctly.
+            We Transform Every Industry and Business Process.
           </p>
 
           {/* Description */}
@@ -64,7 +64,7 @@ export default function HeroSection() {
             className="text-gray-400 text-[clamp(0.8rem,1.5vw,1.25rem)] font-light mb-4 md:mb-8 leading-relaxed opacity-0 animate-fade-up"
             style={{ animationDelay: "0.55s" }}
           >
-            Enterprise security systems built in days. AI-powered surveillance deployed with zero-trust architecture. Smart access control set up for your entire facility. All of it done right, not just fast.
+            High-performance websites built in days. ROI-driven marketing campaigns deployed with precision. Cognitive AI automation workflows set up for your entire business. All of it done right, not just fast.
           </p>
 
           {/* Two CTA buttons */}
@@ -77,7 +77,7 @@ export default function HeroSection() {
                 Book a Call
               </button>
             </a>
-            <a href="#services" className="pointer-events-auto">
+            <a href="#projects" className="pointer-events-auto">
               <button className="bg-white/10 text-white border border-white/20 px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 text-xs sm:text-sm rounded-sm cursor-pointer hover:bg-white/20 transition-all active:scale-[0.97] font-bold select-none">
                 Our Work
               </button>
@@ -89,7 +89,7 @@ export default function HeroSection() {
             className="text-gray-500 text-[10px] sm:text-xs font-light mt-4 sm:mt-6 md:mt-8 opacity-0 animate-fade-up"
             style={{ animationDelay: "0.85s" }}
           >
-            Trusted security partner. Columbus, OH. 12 systems deployed.
+            Trusted digital growth partner.
           </p>
         </div>
       </div>

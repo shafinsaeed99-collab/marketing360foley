@@ -1,9 +1,9 @@
 export default function AboutSection() {
   const stats = [
-    { value: "12+", label: "Active Deployments" },
-    { value: "99.99%", label: "System Uptime" },
-    { value: "< 5s", label: "Threat Latency" },
-    { value: "0", label: "Security Breaches" }
+    { value: "15+", label: "Active Clients" },
+    { value: "50+", label: "Active Projects" },
+    { value: "24/7", label: "Dedicated Support" },
+    { value: "99%", label: "Success Ratio" }
   ]
 
   return (
@@ -18,14 +18,14 @@ export default function AboutSection() {
             // Who We Are
           </p>
           <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tight leading-none text-foreground">
-            Zero-Trust is not a buzzword. <br />
-            <span className="text-primary text-glow">It is our standard.</span>
+            One Agency<br />
+            <span className="text-primary text-glow">One Source </span>
           </h2>
           <p className="text-muted-foreground text-sm md:text-base leading-relaxed font-light">
-            Founded by veteran cybersecurity architects, SENTINEL AI was born out of frustration with delayed installations, bloated costs, and software that creates more gaps than it seals. We architected a unified hardware-software ecosystem that connects local visual detection directly to digital access logs, analyzed instantly by secure edge computing modules.
+            Founded by experienced digital strategists and creative developers, Marketing360 Foley was built to solve the challenges businesses face with fragmented marketing, outdated websites, and digital strategies that fail to generate meaningful growth. We created a unified ecosystem that combines web development, SEO, digital marketing, branding, and AI-powered solutions into one seamless experience—helping businesses build a stronger online presence and turn visitors into loyal customers.
           </p>
           <p className="text-muted-foreground text-sm md:text-base leading-relaxed font-light">
-            We don’t compromise on latency. We don’t configure generic setups. We secure your premises, your data center, or your logistics hubs within days—establishing strict zero-trust parameters that secure everything from entry points to virtual directories.
+            We don't rely on generic templates. We don't chase empty metrics. We create tailored digital strategies that align with your business goals, optimize every customer interaction, and deliver measurable results. Whether you're launching a new brand, scaling your business, or modernizing your online presence, we help you grow faster and stay ahead in today's competitive digital landscape.
           </p>
         </div>
 
