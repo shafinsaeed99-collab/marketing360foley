@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, useState } from "react"
 
 const PROJECTS = [
   {
@@ -8,6 +8,10 @@ const PROJECTS = [
     metrics: "400k sq ft secured",
     link: "https://fireworksnation.com/",
     image: "/fireworksnation-landing.png",
+    livePreview: true,
+    domain: "fireworksnation.com",
+    iframeWidth: 1280,
+    iframeHeight: 3680,
   },
   {
     title: "Sweet Paradise",
@@ -15,7 +19,12 @@ const PROJECTS = [
     tags: ["Data Center", "Access Control", "Zero-Trust"],
     metrics: "140 cabinets shielded",
     link: "https://sweetparadise360.com/",
+    iframeSrc: "https://dulcet-griffin-e914c3.netlify.app/",
     image: "/sweetparadise-landing.png",
+    livePreview: true,
+    domain: "sweetparadise360.com",
+    iframeWidth: 1280,
+    iframeHeight: 6300,
   },
   {
     title: "PM Plastic",
@@ -24,70 +33,123 @@ const PROJECTS = [
     metrics: "4,000+ staff managed",
     link: "https://pmplastic.com/",
     image: "/pmplastic-landing.png",
+    livePreview: true,
+    domain: "pmplastic.com",
+    iframeWidth: 1280,
+    iframeHeight: 5500,
   }
 ]
 
-function FireworksCard({ project }: { project: typeof PROJECTS[0] }) {
-  const videoRef = useRef<HTMLVideoElement>(null)
+function LivePreviewCard({ project }: { project: typeof PROJECTS[0] }) {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const wrapperRef = useRef<HTMLDivElement>(null)
+  const [scale, setScale] = useState(0.25)
 
+  const domain = ('domain' in project && project.domain) ? project.domain as string : new URL(project.link).hostname
+  const iframeW = ('iframeWidth' in project && project.iframeWidth) ? (project.iframeWidth as number) : 1280
+  const iframeH = ('iframeHeight' in project && project.iframeHeight) ? (project.iframeHeight as number) : 3680
+  const srcUrl = ('iframeSrc' in project && project.iframeSrc) ? (project.iframeSrc as string) : project.link
+
+  // Dynamically calculate scale so the iframe fits the card width
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.load()
-    }
-  }, [])
+    const container = containerRef.current
+    if (!container) return
 
-  const handleMouseEnter = () => {
-    if (videoRef.current) {
-      videoRef.current.play().catch((err) => console.log("Video play interrupted:", err))
+    const updateScale = () => {
+      const containerWidth = container.clientWidth
+      setScale(containerWidth / iframeW)
     }
-  }
 
-  const handleMouseLeave = () => {
-    if (videoRef.current) {
-      videoRef.current.pause()
-      videoRef.current.currentTime = 0
-    }
-  }
+    updateScale()
+    const observer = new ResizeObserver(updateScale)
+    observer.observe(container)
+    return () => observer.disconnect()
+  }, [iframeW])
+
+  // Animate the wrapper to scroll the iframe view from top to bottom
+  useEffect(() => {
+    const wrapper = wrapperRef.current
+    const container = containerRef.current
+    if (!wrapper || !container) return
+
+    const iframeVisualHeight = iframeH * scale
+    const containerHeight = container.clientHeight
+    const scrollDistance = iframeVisualHeight - containerHeight
+
+    if (scrollDistance <= 0) return
+
+    // Smooth pacing: ~30ms per pixel
+    const duration = scrollDistance * 30
+
+    const animation = wrapper.animate(
+      [
+        { transform: "translateY(0)" },
+        { transform: `translateY(-${scrollDistance}px)` },
+      ],
+      {
+        duration,
+        iterations: Infinity,
+        direction: "normal",
+        easing: "linear",
+      }
+    )
+
+    return () => animation.cancel()
+  }, [scale, iframeH])
 
   return (
     <a
       href={project.link}
       target="_blank"
       rel="noopener noreferrer"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className="bg-secondary/10 border border-border/50 rounded-xl overflow-hidden flex flex-col hover:border-primary/40 transition-all duration-300 group hover:shadow-[0_4px_30px_rgba(0,0,0,0.4)] cursor-pointer no-underline text-inherit h-full min-h-[380px]"
+      className="bg-secondary/10 border border-border/50 rounded-xl overflow-hidden flex flex-col hover:border-primary/40 transition-all duration-300 group hover:shadow-[0_4px_30px_rgba(0,0,0,0.4)] cursor-pointer no-underline text-inherit h-[340px]"
     >
-      {/* 75% height preview demo container */}
-      <div className="h-[285px] relative overflow-hidden border-b border-border/40 select-none bg-background flex flex-col">
+      {/* 85% height preview container */}
+      <div className="flex-[85] relative overflow-hidden border-b border-border/40 select-none bg-background flex flex-col min-h-0">
         {/* Browser Bar decoration */}
-        <div className="h-6 bg-secondary/30 border-b border-border/30 px-3 flex items-center gap-1.5 shrink-0 z-10 relative">
-          <span className="w-1.5 h-1.5 rounded-full bg-red-500/60" />
-          <span className="w-1.5 h-1.5 rounded-full bg-yellow-500/60" />
-          <span className="w-1.5 h-1.5 rounded-full bg-green-500/60" />
-          <span className="text-[9px] text-muted-foreground/60 font-mono ml-3 select-none tracking-tight">fireworksnation.com</span>
+        <div className="h-6 bg-secondary/40 border-b border-border/30 px-3 flex items-center gap-1.5 shrink-0 z-10 relative">
+          <span className="w-1.5 h-1.5 rounded-full bg-red-500/70" />
+          <span className="w-1.5 h-1.5 rounded-full bg-yellow-500/70" />
+          <span className="w-1.5 h-1.5 rounded-full bg-green-500/70" />
+          <span className="text-[9px] text-muted-foreground/50 font-mono ml-2 select-none tracking-tight">{domain}</span>
         </div>
         
-        {/* Video Player wrapper */}
-        <div className="relative w-full flex-1 overflow-hidden bg-black flex items-center justify-center">
-          <video
-            ref={videoRef}
-            className="w-full h-full object-cover object-top"
-            muted
-            playsInline
-            preload="auto"
-            loop
+        {/* Live scrolling iframe preview */}
+        <div ref={containerRef} className="relative w-full flex-1 overflow-hidden bg-black min-h-0">
+          <div
+            ref={wrapperRef}
+            className="will-change-transform"
+            style={{ width: "100%", height: iframeH * scale }}
           >
-            <source src="/fireworksnation-demo.webm#t=0.1" type="video/webm" />
-            Your browser does not support the video tag.
-          </video>
+            <iframe
+              src={srcUrl}
+              title={`${project.title} website preview`}
+              scrolling="no"
+              style={{
+                width: `${iframeW}px`,
+                minWidth: `${iframeW}px`,
+                maxWidth: "none",
+                height: `${iframeH}px`,
+                minHeight: `${iframeH}px`,
+                maxHeight: "none",
+                border: "none",
+                overflow: "hidden",
+                transformOrigin: "top left",
+                transform: `scale(${scale})`,
+                pointerEvents: "none",
+                display: "block",
+              }}
+              tabIndex={-1}
+              loading="eager"
+            />
+          </div>
         </div>
       </div>
 
-      {/* 25% height title container */}
-      <div className="h-[95px] flex items-center justify-center p-6 bg-transparent">
-        <h3 className="text-sm font-bold tracking-[0.2em] text-foreground uppercase group-hover:text-primary transition-colors duration-300 text-center">
-          FIREWORKS NATION
+      {/* 15% height title container */}
+      <div className="flex-[15] flex items-center justify-center px-3 bg-transparent shrink-0">
+        <h3 className="text-xs font-bold tracking-[0.2em] text-foreground uppercase group-hover:text-primary transition-colors duration-300 text-center">
+          {project.title.toUpperCase()}
         </h3>
       </div>
     </a>
@@ -116,10 +178,8 @@ export default function ProjectsSection() {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {PROJECTS.map((project) => {
-            const isFireworks = project.title.toLowerCase() === "fireworks nation"
-
-            if (isFireworks) {
-              return <FireworksCard key={project.title} project={project} />
+            if ('livePreview' in project && project.livePreview) {
+              return <LivePreviewCard key={project.title} project={project} />
             }
 
             return 'link' in project && project.link ? (
@@ -131,23 +191,23 @@ export default function ProjectsSection() {
                 className="bg-secondary/10 border border-border/50 rounded-xl overflow-hidden flex flex-col hover:border-primary/40 transition-all duration-300 group hover:shadow-[0_4px_30px_rgba(0,0,0,0.4)] cursor-pointer no-underline text-inherit"
               >
                 {/* Image / SVG Diagram */}
-                <div className="h-48 relative overflow-hidden border-b border-border/40 select-none">
+                <div className="h-40 relative overflow-hidden border-b border-border/40 select-none">
                   <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-500 ease-out">
                     <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover object-top"
-                      />
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover object-top"
+                    />
                   </div>
                   {/* Glowing subtle filter overlay */}
                   <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/2 transition-colors duration-300 pointer-events-none" />
                 </div>
 
                 {/* Card Content */}
-                <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
+                <div className="p-5 flex-1 flex flex-col justify-between">
                   <div>
                     {/* Tag List */}
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex flex-wrap gap-1.5 mb-3">
                       {project.tags.map((tag) => (
                         <span
                           key={tag}
@@ -159,18 +219,18 @@ export default function ProjectsSection() {
                     </div>
 
                     {/* Project Name */}
-                    <h3 className="text-lg font-semibold text-foreground uppercase mb-2 group-hover:text-primary transition-colors duration-200">
+                    <h3 className="text-base font-semibold text-foreground uppercase mb-1.5 group-hover:text-primary transition-colors duration-200">
                       {project.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-muted-foreground text-xs md:text-sm leading-relaxed font-light mb-6">
+                    <p className="text-muted-foreground text-xs leading-relaxed font-light mb-4">
                       {project.description}
                     </p>
                   </div>
 
                   {/* Metrics log footer */}
-                  <div className="border-t border-border/40 pt-4 flex items-center justify-between text-[10px] sm:text-xs font-mono">
+                  <div className="border-t border-border/40 pt-3 flex items-center justify-between text-[10px] font-mono">
                     <span className="text-muted-foreground/60">// METRIC_LOG:</span>
                     <span className="text-foreground font-semibold uppercase">{project.metrics}</span>
                   </div>
@@ -182,23 +242,23 @@ export default function ProjectsSection() {
                 className="bg-secondary/10 border border-border/50 rounded-xl overflow-hidden flex flex-col hover:border-primary/40 transition-all duration-300 group hover:shadow-[0_4px_30px_rgba(0,0,0,0.4)]"
               >
                 {/* Image / SVG Diagram */}
-                <div className="h-48 relative overflow-hidden border-b border-border/40 select-none">
+                <div className="h-40 relative overflow-hidden border-b border-border/40 select-none">
                   <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-500 ease-out">
                     <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover object-top"
-                      />
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover object-top"
+                    />
                   </div>
                   {/* Glowing subtle filter overlay */}
                   <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/2 transition-colors duration-300 pointer-events-none" />
                 </div>
 
                 {/* Card Content */}
-                <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
+                <div className="p-5 flex-1 flex flex-col justify-between">
                   <div>
                     {/* Tag List */}
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex flex-wrap gap-1.5 mb-3">
                       {project.tags.map((tag) => (
                         <span
                           key={tag}
@@ -210,18 +270,18 @@ export default function ProjectsSection() {
                     </div>
 
                     {/* Project Name */}
-                    <h3 className="text-lg font-semibold text-foreground uppercase mb-2 group-hover:text-primary transition-colors duration-200">
+                    <h3 className="text-base font-semibold text-foreground uppercase mb-1.5 group-hover:text-primary transition-colors duration-200">
                       {project.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-muted-foreground text-xs md:text-sm leading-relaxed font-light mb-6">
+                    <p className="text-muted-foreground text-xs leading-relaxed font-light mb-4">
                       {project.description}
                     </p>
                   </div>
 
                   {/* Metrics log footer */}
-                  <div className="border-t border-border/40 pt-4 flex items-center justify-between text-[10px] sm:text-xs font-mono">
+                  <div className="border-t border-border/40 pt-3 flex items-center justify-between text-[10px] font-mono">
                     <span className="text-muted-foreground/60">// METRIC_LOG:</span>
                     <span className="text-foreground font-semibold uppercase">{project.metrics}</span>
                   </div>

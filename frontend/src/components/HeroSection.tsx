@@ -1,5 +1,5 @@
 import VideoBackground from "./VideoBackground"
-import LogoMarquee from "./LogoMarquee"
+
 
 export default function HeroSection() {
   return (
@@ -95,7 +95,7 @@ export default function HeroSection() {
       </div>
 
       {/* ──── Logo Marquee (pinned to bottom) ──── */}
-      <LogoMarquee />
+      {/* <LogoMarquee /> */}
     </section>
   )
 }

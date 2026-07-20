@@ -47,7 +47,7 @@ export default function ContactSection() {
 
         {/* Main Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
-          
+
           {/* Left Column: High-Tech Glassmorphism Contact Form */}
           <div className="bg-secondary/10 border border-border/60 rounded-2xl p-6 sm:p-8 md:p-10 backdrop-blur-md relative overflow-hidden shadow-2xl flex flex-col justify-center">
             {/* Subtle indicator bar */}
@@ -209,7 +209,7 @@ export default function ContactSection() {
                     Email
                   </span>
                   <span className="text-foreground text-sm sm:text-base font-medium select-all">
-                    info@nevxora.com
+                    info@marketing360.com
                   </span>
                 </div>
               </div>
@@ -224,7 +224,7 @@ export default function ContactSection() {
                     Phone
                   </span>
                   <span className="text-foreground text-sm sm:text-base font-medium select-all">
-                    +92 3229657649
+                    +1 (414) 885-9504
                   </span>
                 </div>
               </div>
@@ -239,7 +239,7 @@ export default function ContactSection() {
                     Location
                   </span>
                   <span className="text-foreground text-sm sm:text-base font-medium">
-                    Islamabad | Pakistan
+                    Alabama | United States
                   </span>
                 </div>
               </div>
