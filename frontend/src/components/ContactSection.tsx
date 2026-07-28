@@ -75,7 +75,7 @@ export default function ContactSection() {
                   }}
                   className="mt-8 text-xs text-primary underline underline-offset-4 uppercase tracking-widest font-mono font-semibold hover:text-white transition-colors"
                 >
-                  Back to Contact Form
+                  Resend
                 </button>
               </div>
             ) : (

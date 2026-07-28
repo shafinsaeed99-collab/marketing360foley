@@ -52,7 +52,7 @@ export default function PrivacyPolicyPage() {
       {/* ──── Content Section ──── */}
       <section className="py-20 px-6 md:px-12 lg:px-24 bg-background relative overflow-hidden">
         <div className="max-w-4xl mx-auto relative z-10 text-foreground/80 font-light leading-relaxed space-y-10">
-          
+
           <div className="space-y-4">
             <h2 className="text-xl sm:text-2xl font-semibold uppercase tracking-wide text-foreground">
               1. Information Collection
@@ -126,10 +126,10 @@ export default function PrivacyPolicyPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-2 text-sm">
               <span className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-primary" /> compliance@marketing360foley.com
+                <Mail className="w-4 h-4 text-primary" /> info@marketing360.com
               </span>
               <span className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-primary" /> +1 (614) 555-0190
+                <Phone className="w-4 h-4 text-primary" /> +1 (414) 885-9504
               </span>
             </div>
           </div>
