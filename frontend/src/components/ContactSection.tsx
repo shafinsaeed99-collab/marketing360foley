@@ -11,15 +11,31 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate secure network transaction
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSuccess(true)
-    }, 1500)
+    const formElement = e.currentTarget
+    const formData = new FormData(formElement)
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData as any).toString(),
+    })
+      .then((res) => {
+        setIsSubmitting(false)
+        if (res.ok) {
+          setIsSuccess(true)
+        } else {
+          alert("Form submission failed. Please try again.")
+        }
+      })
+      .catch((error) => {
+        console.error("Netlify form submission error:", error)
+        setIsSubmitting(false)
+        alert("Form submission error. Please try again.")
+      })
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -80,7 +96,21 @@ export default function ContactSection() {
               </div>
             ) : (
               /* Contact Form */
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                onSubmit={handleSubmit}
+                className="space-y-6"
+              >
+                {/* Netlify Form Hidden Inputs */}
+                <input type="hidden" name="form-name" value="contact" />
+                <p className="hidden">
+                  <label>
+                    Don't fill this out if you're human: <input name="bot-field" />
+                  </label>
+                </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Name */}
                   <div className="space-y-2">
