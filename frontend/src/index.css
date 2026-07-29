@@ -200,3 +200,13 @@ video,
 [class*="animate-"] {
   transition-property: none !important;
 }
+
+/* Project Card Hover Animation */
+.project-card img {
+  transition: transform 0.3s ease !important;
+}
+
+.project-card:hover img {
+  transform: translateY(8px) !important;
+}
+

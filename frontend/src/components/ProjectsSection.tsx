@@ -1,25 +1,16 @@
 const PROJECTS = [
   {
     title: "FireWorks Nation",
-    description: "Thermal perimeter defense and autonomous AI fence monitoring across 400,000 sq ft of distribution space. Integrates active detection barriers and alerts local dispatch within 2 seconds.",
-    tags: ["Surveillance", "Logistics", "Active Guarding"],
-    metrics: "400k sq ft secured",
     link: "https://fireworksnation.com/",
     image: "/assets/projects/project-1.jpg",
   },
   {
     title: "Sweet Paradise",
-    description: "Sub-millisecond hardware-level lockouts and zero-trust microsegmentation. Protects 140 server cabinets with biometric cabinets, facial mapping sensors, and optical fiber loop sensors.",
-    tags: ["Data Center", "Access Control", "Zero-Trust"],
-    metrics: "140 cabinets shielded",
     link: "https://sweetparadise360.com/",
     image: "/assets/projects/project-2.jpg",
   },
   {
     title: "PM Plastic",
-    description: "Biometric security integration and facial scanning automation mapping 4,000+ daily corporate employees. Fully synchronized gate relays prevent unauthorized entry and tailgating.",
-    tags: ["Corporate", "Biometrics", "Gate Integration"],
-    metrics: "4,000+ staff managed",
     link: "https://pmplastic.com/",
     image: "/assets/projects/project-3.jpg",
   }
@@ -52,50 +43,24 @@ export default function ProjectsSection() {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-secondary/10 border border-border/50 rounded-xl overflow-hidden flex flex-col hover:border-primary/40 transition-all duration-300 group hover:shadow-[0_4px_30px_rgba(0,0,0,0.4)] cursor-pointer no-underline text-inherit"
+              className="project-card group bg-secondary/10 border border-border/50 rounded-xl overflow-hidden flex flex-col hover:border-primary/40 transition-all duration-300 hover:shadow-[0_4px_30px_rgba(0,0,0,0.4)] cursor-pointer no-underline text-inherit"
             >
               {/* Static Screenshot Image Container */}
               <div className="h-52 relative overflow-hidden border-b border-border/40 select-none bg-background">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover object-top transition-transform duration-300 ease-in-out group-hover:translate-y-[8px]"
+                  className="w-full h-full object-cover object-top"
                 />
                 {/* Subtle filter overlay */}
                 <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors duration-300 pointer-events-none" />
               </div>
 
-              {/* Card Content */}
-              <div className="p-5 flex-1 flex flex-col justify-between">
-                <div>
-                  {/* Tag List */}
-                  <div className="flex flex-wrap gap-1.5 mb-3">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[9px] uppercase tracking-widest font-semibold text-primary/80 bg-primary/5 border border-primary/20 px-2 py-0.5 rounded-sm"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Project Name */}
-                  <h3 className="text-base font-semibold text-foreground uppercase mb-1.5 group-hover:text-primary transition-colors duration-200">
-                    {project.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-muted-foreground text-xs leading-relaxed font-light mb-4">
-                    {project.description}
-                  </p>
-                </div>
-
-                {/* Metrics log footer */}
-                <div className="border-t border-border/40 pt-3 flex items-center justify-between text-[10px] font-mono">
-                  <span className="text-muted-foreground/60">// METRIC_LOG:</span>
-                  <span className="text-foreground font-semibold uppercase">{project.metrics}</span>
-                </div>
+              {/* Project Title Container */}
+              <div className="p-4 flex items-center justify-center bg-transparent shrink-0">
+                <h3 className="text-sm md:text-base font-bold tracking-widest text-foreground uppercase group-hover:text-primary transition-colors duration-200 text-center">
+                  {project.title}
+                </h3>
               </div>
             </a>
           ))}
