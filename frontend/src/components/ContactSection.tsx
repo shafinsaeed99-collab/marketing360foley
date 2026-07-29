@@ -15,8 +15,7 @@ export default function ContactSection() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    const formElement = e.currentTarget
-    const formData = new FormData(formElement)
+    const formData = new FormData(e.target as HTMLFormElement)
 
     fetch("/", {
       method: "POST",
