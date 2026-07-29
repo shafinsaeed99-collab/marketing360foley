@@ -12,6 +12,7 @@ import SocialMediaMarketingPage from "./pages/SocialMediaMarketingPage"
 import MarketingSeoSemPage from "./pages/MarketingSeoSemPage"
 import AiAutomationPage from "./pages/AiAutomationPage"
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage"
+import ProjectsPage from "./pages/ProjectsPage"
 import { ScrollToTop } from "./components/ScrollToTop"
 
 function HomePage() {
@@ -35,6 +36,7 @@ export default function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/services/web-design" element={<WebDesignPage />} />
         <Route path="/services/social-media-marketing" element={<SocialMediaMarketingPage />} />
         <Route path="/services/marketing-seo-sem" element={<MarketingSeoSemPage />} />
