@@ -72,7 +72,7 @@ export default function ProjectsSection() {
         <div className="mt-16 flex justify-center">
           <Link
             to="/projects"
-            className="inline-flex items-center justify-center px-8 py-4 bg-[#0066ff] hover:bg-[#0052cc] text-white font-extrabold text-xs md:text-sm tracking-widest uppercase transition-all duration-300 shadow-[0_4px_20px_rgba(0,102,255,0.3)] hover:shadow-[0_6px_25px_rgba(0,102,255,0.5)] active:scale-95 text-center cursor-pointer select-none"
+            className="inline-flex items-center justify-center px-8 py-4 bg-primary hover:brightness-110 text-primary-foreground font-extrabold text-xs md:text-sm tracking-widest uppercase transition-all duration-300 shadow-[0_4px_20px_rgba(168,85,247,0.35)] hover:shadow-[0_6px_25px_rgba(168,85,247,0.55)] active:scale-95 text-center cursor-pointer select-none"
             style={{
               clipPath: "polygon(0 0, calc(100% - 16px) 0, 100% 100%, 0 100%)",
             }}
