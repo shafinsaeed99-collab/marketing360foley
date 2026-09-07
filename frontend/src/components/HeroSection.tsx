@@ -3,19 +3,19 @@ import VideoBackground from "./VideoBackground"
 
 export default function HeroSection() {
   return (
-    <section className="dark relative min-h-screen flex flex-col overflow-hidden" style={{ backgroundColor: 'hsl(260, 87%, 3%)' }}>
+    <section className="relative min-h-screen flex flex-col overflow-hidden bg-[hsl(var(--hero-bg))] transition-colors duration-300">
       {/* ──── Background Video (looping, behind everything) ──── */}
       <VideoBackground />
 
       {/* ──── CSS Mesh Overlay (grid lines + glow nodes) ──── */}
       <div className="absolute inset-0 pointer-events-none z-[2]">
-        <div className="absolute inset-0" style={{ backgroundColor: 'hsla(260, 87%, 3%, 0.25)' }} />
+        <div className="absolute inset-0 dark:bg-[hsla(260,87%,3%,0.25)] bg-white/10 transition-colors duration-300" />
         {/* Grid lines */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--grid-line-color)_1px,transparent_1px),linear-gradient(to_bottom,var(--grid-line-color)_1px,transparent_1px)] bg-[size:40px_40px]" />
 
         {/* Glowing ambient nodes */}
-        <div className="absolute top-[25%] left-[20%] w-[150px] sm:w-[300px] h-[150px] sm:h-[300px] bg-primary/10 rounded-full blur-[60px] sm:blur-[100px] animate-pulse" />
-        <div className="absolute bottom-[20%] right-[15%] w-[200px] sm:w-[450px] h-[200px] sm:h-[450px] bg-primary/5 rounded-full blur-[80px] sm:blur-[130px]" />
+        <div className="absolute top-[25%] left-[20%] w-[150px] sm:w-[300px] h-[150px] sm:h-[300px] dark:bg-primary/10 bg-purple-600/15 rounded-full blur-[60px] sm:blur-[100px] animate-pulse" />
+        <div className="absolute bottom-[20%] right-[15%] w-[200px] sm:w-[450px] h-[200px] sm:h-[450px] dark:bg-primary/5 bg-indigo-600/15 rounded-full blur-[80px] sm:blur-[130px]" />
 
         {/* Blueprint line design */}
         <svg className="absolute inset-0 w-full h-full opacity-15" xmlns="http://www.w3.org/2000/svg">
@@ -28,32 +28,32 @@ export default function HeroSection() {
 
       {/* ──── Blurred Overlay Shape (centered behind content) ──── */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] sm:w-[700px] lg:w-[984px] h-[300px] sm:h-[400px] lg:h-[527px] opacity-50 bg-gray-950 blur-[50px] sm:blur-[82px] pointer-events-none z-[5]"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] sm:w-[700px] lg:w-[984px] h-[300px] sm:h-[400px] lg:h-[527px] dark:opacity-50 opacity-0 dark:bg-gray-950 bg-transparent blur-[50px] sm:blur-[82px] pointer-events-none z-[5] transition-all duration-300"
       />
 
-      {/* ──── Dark overlay ──── */}
-      <div className="absolute inset-0 bg-black/15 z-[15] pointer-events-none" />
+      {/* ──── Dark / Light overlay ──── */}
+      <div className="absolute inset-0 dark:bg-black/15 bg-transparent z-[15] pointer-events-none transition-colors duration-300" />
 
       {/* ──── Hero Content (anchored to bottom-left via flex) ──── */}
       <div className="relative z-20 pointer-events-none flex-1 flex items-end w-full">
         <div className="w-full max-w-[90%] sm:max-w-md lg:max-w-2xl px-6 md:px-10 pb-8 sm:pb-12 md:pb-16 pt-28 sm:pt-32 flex flex-col justify-end">
           {/* Heading */}
           <h1
-            className="text-[clamp(2.5rem,8vw,6rem)] font-bold leading-[1.05] tracking-[-0.05em] text-white mb-2 md:mb-4 uppercase opacity-0 animate-fade-up"
+            className="text-[clamp(2.5rem,8vw,6rem)] font-bold leading-[1.05] tracking-[-0.05em] text-foreground mb-2 md:mb-4 uppercase opacity-0 animate-fade-up"
             style={{ animationDelay: "0.2s" }}
           >
             <span
               className="bg-clip-text text-transparent"
-              style={{ backgroundImage: "linear-gradient(to left, #6366f1, #a855f7, #fcd34d)" }}
+              style={{ backgroundImage: "linear-gradient(to left, #6366f1, #a855f7, #f59e0b)" }}
             >
               MARKETING360
             </span>{" "}
-            FOLEY
+            <span className="text-foreground">FOLEY</span>
           </h1>
 
           {/* Subheading */}
           <p
-            className="text-white/80 text-[clamp(1rem,2.5vw,1.875rem)] font-light mb-3 md:mb-6 opacity-0 animate-fade-up"
+            className="text-foreground/90 dark:text-white/80 text-[clamp(1rem,2.5vw,1.875rem)] font-light mb-3 md:mb-6 opacity-0 animate-fade-up"
             style={{ animationDelay: "0.4s" }}
           >
             We Transform Every Industry and Business Process.
@@ -61,7 +61,7 @@ export default function HeroSection() {
 
           {/* Description */}
           <p
-            className="text-gray-400 text-[clamp(0.8rem,1.5vw,1.25rem)] font-light mb-4 md:mb-8 leading-relaxed opacity-0 animate-fade-up"
+            className="text-muted-foreground dark:text-gray-400 text-[clamp(0.8rem,1.5vw,1.25rem)] font-light mb-4 md:mb-8 leading-relaxed opacity-0 animate-fade-up"
             style={{ animationDelay: "0.55s" }}
           >
             High-performance websites built in days. ROI-driven marketing campaigns deployed with precision. Cognitive AI automation workflows set up for your entire business. All of it done right, not just fast.
@@ -78,7 +78,7 @@ export default function HeroSection() {
               </button>
             </a>
             <a href="#projects" className="pointer-events-auto">
-              <button className="bg-white/10 text-white border border-white/20 px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 text-xs sm:text-sm rounded-sm cursor-pointer hover:bg-white/20 transition-all active:scale-[0.97] font-bold select-none">
+              <button className="bg-foreground/5 dark:bg-white/10 text-foreground dark:text-white border border-foreground/20 dark:border-white/20 px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 text-xs sm:text-sm rounded-sm cursor-pointer hover:bg-foreground/10 dark:hover:bg-white/20 transition-all active:scale-[0.97] font-bold select-none">
                 Our Work
               </button>
             </a>
@@ -86,7 +86,7 @@ export default function HeroSection() {
 
           {/* Trust line */}
           <p
-            className="text-gray-500 text-[10px] sm:text-xs font-light mt-4 sm:mt-6 md:mt-8 opacity-0 animate-fade-up"
+            className="text-muted-foreground/70 dark:text-gray-500 text-[10px] sm:text-xs font-light mt-4 sm:mt-6 md:mt-8 opacity-0 animate-fade-up"
             style={{ animationDelay: "0.85s" }}
           >
             Trusted digital growth partner.

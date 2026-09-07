@@ -28,7 +28,7 @@ export default function ProjectsSection() {
         {/* Section Header */}
         <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-2xl">
-            <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tight text-foreground">
               Our Projects
             </h2>
           </div>

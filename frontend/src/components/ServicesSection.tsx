@@ -68,7 +68,7 @@ export default function ServicesSection() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors duration-300 uppercase tracking-wide flex items-center gap-2">
+                  <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors duration-300 uppercase tracking-wide flex items-center gap-2">
                     {service.title}
                     {hasLink && (
                       <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
@@ -108,7 +108,7 @@ export default function ServicesSection() {
                 <Link
                   key={service.title}
                   to={service.link!}
-                  className="glow-card bg-secondary/30 border border-border/60 rounded-xl p-8 hover:border-primary/50 transition-all duration-500 group flex flex-col justify-between cursor-pointer"
+                  className="glow-card bg-secondary/30 border border-border/60 rounded-xl p-8 hover:border-primary/50 transition-colors duration-300 group flex flex-col justify-between cursor-pointer"
                 >
                   {cardContent}
                 </Link>
@@ -118,7 +118,7 @@ export default function ServicesSection() {
             return (
               <div
                 key={service.title}
-                className="glow-card bg-secondary/30 border border-border/60 rounded-xl p-8 hover:border-primary/50 transition-all duration-500 group flex flex-col justify-between"
+                className="glow-card bg-secondary/30 border border-border/60 rounded-xl p-8 hover:border-primary/50 transition-colors duration-300 group flex flex-col justify-between"
               >
                 {cardContent}
               </div>

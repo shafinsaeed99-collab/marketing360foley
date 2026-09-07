@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link, useLocation } from "react-router-dom"
+import { CalendarCheck } from "lucide-react"
 import { Button } from "./ui/Button"
 import ThemeToggle from "./ThemeToggle"
 
@@ -32,7 +33,7 @@ export default function Navbar() {
       <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 sm:px-8 lg:px-16 py-5 bg-transparent backdrop-blur-[2px]">
         {/* Left: Logo */}
         <Link to="/" className="text-xl font-semibold tracking-tight select-none">
-          <span className="text-primary font-bold">MARKETING360</span> <span className="text-white font-bold">FOLEY</span>
+          <span className="text-primary font-bold">MARKETING360</span> <span className="text-foreground font-bold">FOLEY</span>
         </Link>
 
         {/* Center: Nav links (desktop) */}
@@ -58,19 +59,29 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Right: CTA + Theme Toggle + Hamburger */}
+        {/* Right: Free Audit CTA + Theme Toggle + Get Quote + Hamburger */}
         <div className="flex items-center gap-3">
+          {/* Free Audit Pill Button */}
+          <Link
+            to="/free-audit"
+            className="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-[#1a9ba8] to-[#14919b] hover:from-[#168894] hover:to-[#0f7a83] text-white text-xs sm:text-sm font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full shadow-[0_4px_14px_rgba(26,155,168,0.25)] hover:shadow-[0_6px_20px_rgba(26,155,168,0.4)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 select-none"
+          >
+            <CalendarCheck className="w-4 h-4 stroke-[2.2]" />
+            <span>Free Audit</span>
+          </Link>
+
           <div className="hidden md:block">
             <ThemeToggle />
           </div>
+
           {isHome ? (
-            <a href="#contacts" className="hidden md:inline-flex">
+            <a href="#contacts" className="hidden lg:inline-flex">
               <Button variant="navCta" size="lg" className="px-6 py-2.5">
                 Get Quote
               </Button>
             </a>
           ) : (
-            <Link to="/#contacts" className="hidden md:inline-flex">
+            <Link to="/#contacts" className="hidden lg:inline-flex">
               <Button variant="navCta" size="lg" className="px-6 py-2.5">
                 Get Quote
               </Button>
@@ -144,13 +155,27 @@ export default function Navbar() {
             )
           )}
 
+          {/* Free Audit Button in Mobile Menu */}
+          <Link
+            to="/free-audit"
+            onClick={() => setIsOpen(false)}
+            className={`inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#1a9ba8] to-[#14919b] text-white text-base font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 ${isOpen
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-4"
+              }`}
+            style={{ transitionDelay: isOpen ? `${NAV_LINKS.length * 80}ms` : "0ms" }}
+          >
+            <CalendarCheck className="w-5 h-5 stroke-[2.2]" />
+            <span>Free Audit</span>
+          </Link>
+
           {/* Theme toggle in mobile menu */}
           <div
             className={`transition-all duration-300 ${isOpen
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-4"
               }`}
-            style={{ transitionDelay: isOpen ? `${NAV_LINKS.length * 80}ms` : "0ms" }}
+            style={{ transitionDelay: isOpen ? `${(NAV_LINKS.length + 1) * 80}ms` : "0ms" }}
           >
             <ThemeToggle />
           </div>
@@ -163,7 +188,7 @@ export default function Navbar() {
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-4"
               }`}
-            style={{ transitionDelay: isOpen ? `${(NAV_LINKS.length + 1) * 80}ms` : "0ms" }}
+            style={{ transitionDelay: isOpen ? `${(NAV_LINKS.length + 2) * 80}ms` : "0ms" }}
           >
             <Button variant="navCta" size="lg" className="px-8 py-3 text-base">
               Get Quote

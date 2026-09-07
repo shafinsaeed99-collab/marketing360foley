@@ -81,13 +81,50 @@ export default function VideoBackground() {
   }, [fadeIn, fadeOut])
 
   return (
-    <video
-      ref={videoRef}
-      src={VIDEO_URL}
-      muted
-      playsInline
-      className="absolute inset-0 w-full h-full object-cover pointer-events-none z-[1]"
-      style={{ opacity: 0 }}
-    />
+    <>
+      {/* SVG Duotone Filter for Light Mode: maps video pipes into exact Deep Indigo (#4338ca) -> Brand Purple (#7c3aed) -> White */}
+      <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
+        <filter id="lightModeBrandPipes" colorInterpolationFilters="sRGB">
+          {/* Step 1: Invert video colors and adjust black/white levels */}
+          <feColorMatrix
+            type="matrix"
+            values="
+              -1.2 0 0 0 1.05
+              0 -1.2 0 0 1.05
+              0 0 -1.2 0 1.05
+              0 0 0 1 0
+            "
+            result="inverted"
+          />
+          {/* Step 2: Convert to luminance map */}
+          <feColorMatrix
+            in="inverted"
+            type="matrix"
+            values="
+              0.2126 0.7152 0.0722 0 0
+              0.2126 0.7152 0.0722 0 0
+              0.2126 0.7152 0.0722 0 0
+              0 0 0 1 0
+            "
+            result="gray"
+          />
+          {/* Step 3: Map luminance directly into Deep Indigo (#4338ca) -> Brand Purple (#7c3aed) -> White (#ffffff) */}
+          <feComponentTransfer in="gray">
+            <feFuncR type="table" tableValues="0.26 0.43 0.55 0.85 1.0" />
+            <feFuncG type="table" tableValues="0.22 0.22 0.25 0.75 1.0" />
+            <feFuncB type="table" tableValues="0.79 0.85 0.93 0.98 1.0" />
+          </feComponentTransfer>
+        </filter>
+      </svg>
+
+      <video
+        ref={videoRef}
+        src={VIDEO_URL}
+        muted
+        playsInline
+        className="hero-video absolute inset-0 w-full h-full object-cover pointer-events-none z-[1]"
+        style={{ opacity: 0 }}
+      />
+    </>
   )
 }
