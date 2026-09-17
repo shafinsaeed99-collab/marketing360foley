@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { Palette, Megaphone, ArrowRight, TrendingUp, Bot } from "lucide-react"
+import { GlowEffect } from "@/components/core/glow-effect"
 
 const SERVICES = [
   {
@@ -63,7 +64,7 @@ export default function ServicesSection() {
               <>
                 <div>
                   {/* Icon & Glow */}
-                  <div className="w-12 h-12 rounded-lg bg-nav-button flex items-center justify-center border border-border/80 text-primary mb-6 group-hover:shadow-[0_0_15px_rgba(119,253,12,0.3)] group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                  <div className="w-12 h-12 rounded-lg bg-nav-button flex items-center justify-center border border-border/80 text-primary mb-6 group-hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                     <IconComponent className="w-6 h-6" />
                   </div>
 
@@ -103,24 +104,37 @@ export default function ServicesSection() {
               </>
             )
 
-            if (hasLink) {
-              return (
-                <Link
-                  key={service.title}
-                  to={service.link!}
-                  className="glow-card bg-secondary/30 border border-border/60 rounded-xl p-8 hover:border-primary/50 transition-colors duration-300 group flex flex-col justify-between cursor-pointer"
-                >
-                  {cardContent}
-                </Link>
-              )
-            }
+            const cardInnerClass =
+              "relative z-10 flex h-full flex-col justify-between rounded-xl border border-zinc-300/40 bg-zinc-100 dark:border-zinc-800/80 dark:bg-[#121215] p-8 backdrop-blur-sm transition-all duration-300 group-hover:border-primary/40 group-hover:shadow-[0_0_25px_rgba(168,85,247,0.18)]"
 
             return (
               <div
                 key={service.title}
-                className="glow-card bg-secondary/30 border border-border/60 rounded-xl p-8 hover:border-primary/50 transition-colors duration-300 group flex flex-col justify-between"
+                className="relative h-full rounded-xl group flex flex-col"
               >
-                {cardContent}
+                {/* Bright vibrant GlowEffect that shines on cursor hover */}
+                <div className="pointer-events-none absolute -inset-[2px] rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out">
+                  <GlowEffect
+                    colors={["#a855f7", "#6366f1", "#d946ef", "#38bdf8", "#c084fc"]}
+                    mode="colorShift"
+                    blur="medium"
+                    duration={3.5}
+                    scale={1.01}
+                  />
+                </div>
+
+                {hasLink ? (
+                  <Link
+                    to={service.link!}
+                    className={`${cardInnerClass} cursor-pointer`}
+                  >
+                    {cardContent}
+                  </Link>
+                ) : (
+                  <div className={cardInnerClass}>
+                    {cardContent}
+                  </div>
+                )}
               </div>
             )
           })}

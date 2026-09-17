@@ -228,7 +228,9 @@ ul {
 
 /* Specific exclusions for continuous running animations */
 .animate-marquee,
-.animate-marquee * {
+.animate-marquee *,
+.glow-effect-motion,
+.glow-effect-motion * {
   transition-property: none !important;
 }
 
