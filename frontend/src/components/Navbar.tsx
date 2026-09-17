@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom"
 import { CalendarCheck } from "lucide-react"
 import { Button } from "./ui/Button"
 import ThemeToggle from "./ThemeToggle"
+import { GlowEffect } from "@/components/core/glow-effect"
 
 const NAV_LINKS = [
   { label: "Services", href: "/#services" },
@@ -75,14 +76,40 @@ export default function Navbar() {
           </div>
 
           {isHome ? (
-            <a href="#contacts" className="hidden lg:inline-flex">
-              <Button variant="navCta" size="lg" className="px-6 py-2.5">
+            <a href="#contacts" className="relative group hidden lg:inline-flex rounded-lg">
+              <div className="pointer-events-none absolute -inset-[2px] rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out">
+                <GlowEffect
+                  colors={["#a855f7", "#6366f1", "#d946ef", "#38bdf8", "#c084fc"]}
+                  mode="colorShift"
+                  blur="medium"
+                  duration={3.5}
+                  scale={1.01}
+                />
+              </div>
+              <Button
+                variant="navCta"
+                size="lg"
+                className="relative z-10 px-6 py-2.5 group-hover:border-primary/40 group-hover:shadow-[0_0_20px_rgba(168,85,247,0.25)] transition-all"
+              >
                 Get Quote
               </Button>
             </a>
           ) : (
-            <Link to="/#contacts" className="hidden lg:inline-flex">
-              <Button variant="navCta" size="lg" className="px-6 py-2.5">
+            <Link to="/#contacts" className="relative group hidden lg:inline-flex rounded-lg">
+              <div className="pointer-events-none absolute -inset-[2px] rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out">
+                <GlowEffect
+                  colors={["#a855f7", "#6366f1", "#d946ef", "#38bdf8", "#c084fc"]}
+                  mode="colorShift"
+                  blur="medium"
+                  duration={3.5}
+                  scale={1.01}
+                />
+              </div>
+              <Button
+                variant="navCta"
+                size="lg"
+                className="relative z-10 px-6 py-2.5 group-hover:border-primary/40 group-hover:shadow-[0_0_20px_rgba(168,85,247,0.25)] transition-all"
+              >
                 Get Quote
               </Button>
             </Link>
@@ -184,13 +211,26 @@ export default function Navbar() {
           <Link
             to="/#contacts"
             onClick={() => setIsOpen(false)}
-            className={`mt-2 transition-all duration-300 ${isOpen
+            className={`relative group mt-2 transition-all duration-300 ${isOpen
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-4"
               }`}
             style={{ transitionDelay: isOpen ? `${(NAV_LINKS.length + 2) * 80}ms` : "0ms" }}
           >
-            <Button variant="navCta" size="lg" className="px-8 py-3 text-base">
+            <div className="pointer-events-none absolute -inset-[2px] rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out">
+              <GlowEffect
+                colors={["#a855f7", "#6366f1", "#d946ef", "#38bdf8", "#c084fc"]}
+                mode="colorShift"
+                blur="medium"
+                duration={3.5}
+                scale={1.01}
+              />
+            </div>
+            <Button
+              variant="navCta"
+              size="lg"
+              className="relative z-10 px-8 py-3 text-base group-hover:border-primary/40 group-hover:shadow-[0_0_20px_rgba(168,85,247,0.25)] transition-all"
+            >
               Get Quote
             </Button>
           </Link>
